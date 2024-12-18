@@ -1,36 +1,154 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Invite Code Registration System
 
-## Getting Started
+A Next.js application that implements a secure invite code system with wallet integration.
 
-First, run the development server:
+## Setup Instructions
+
+1. Clone the repository and install dependencies:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/tx-tomcat/invite-registration.git
+cd invite-registration
+pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Create `.env`:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```env
+NEXT_PUBLIC_API_URL=http://localhost:3001/api
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3. Start the development server:
 
-## Learn More
+```bash
+pnpm dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Architecture & Design Decisions
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 1. Form Handling Strategy
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Two-Step Registration**: Split into code verification and user registration to reduce complexity and improve UX
+- **Form State Management**: Used React Hook Form for:
+  - Efficient form state management
+  - Built-in validation
+  - Reduced re-renders
+  - Type-safe form handling
 
-## Deploy on Vercel
+### 2. API Integration
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Centralized API Client**:
+  - Consistent error handling
+  - Type-safe API calls
+  - Easy maintenance and updates
+  - Reusable across components
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 3. Validation Approach
+
+- **Client-side Validation**:
+  - Zod schema validation for type safety
+  - Immediate feedback to users
+  - Reduced server load
+- **API-level Validation**:
+  - Email uniqueness check
+  - Wallet address verification
+  - Invite code validation
+
+### 4. Security Measures
+
+- **Wallet Integration**:
+  - Message signing for authentication
+  - Secure wallet connection
+  - Address verification
+- **Rate Limiting**:
+  - Prevented multiple submissions
+  - Protected against brute force attempts
+
+### 5. Error Handling
+
+- **Comprehensive Error States**:
+  - User-friendly error messages
+  - Toast notifications
+  - Form-level error displays
+  - API error handling
+
+## Testing Strategy
+
+1. **Unit Tests**:
+
+- Form validation
+- API client methods
+- Utility functions
+
+2. **Integration Tests**:
+
+- Form submission flows
+- API integration
+- Wallet connection
+
+3. **E2E Tests**:
+
+- Complete registration flow
+- Error scenarios
+- Network conditions
+
+4. **Manual Testing Checklist**:
+
+- Form validation
+- Error messages
+- Loading states
+- Mobile responsiveness
+- Wallet integration
+
+## Future Improvements
+
+### 1. Enhanced Security
+
+- Implement CSRF protection
+- Add rate limiting middleware
+- Add IP-based restrictions
+- Implement session management
+
+### 2. Better User Experience
+
+- Add progress indicator
+- Implement form persistence
+- Add email verification step
+- Improve loading states
+- Add success animations
+
+### 3. Technical Improvements
+
+- Add comprehensive test coverage
+- Implement error boundary
+- Add performance monitoring
+- Improve TypeScript types
+- Add API response caching
+
+### 4. Additional Features
+
+- Add admin dashboard
+- Implement audit logging
+- Add analytics tracking
+- Support multiple wallet providers
+- Add invite code management
+
+### 5. Performance Optimization
+
+- Implement code splitting
+- Add service worker
+- Optimize bundle size
+- Add API request batching
+- Implement request caching
+
+## Known Limitations
+
+- Limited wallet provider support
+- Basic error handling
+- No persistent storage
+- Limited API functionality
+- Basic UI components
+
+## License
+
+This project is licensed under the MIT License.
