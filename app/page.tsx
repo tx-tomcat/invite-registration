@@ -1,5 +1,5 @@
 // app/register/page.tsx
-import { RegistrationForm } from "@/components/RegistrationForm";
+import { RegistrationForm } from "@/components/TabRegistrationForm";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

@@ -43,7 +43,7 @@ const registrationFormSchema = z.object({
 type InviteFormValues = z.infer<typeof inviteFormSchema>;
 type RegistrationFormValues = z.infer<typeof registrationFormSchema>;
 
-export function RegistrationForm() {
+export function InviteRegistrationForm() {
   const [step, setStep] = useState(1);
   const { toast } = useToast();
 
