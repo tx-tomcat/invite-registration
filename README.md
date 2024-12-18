@@ -7,8 +7,8 @@ A Next.js application that implements a secure invite code system with wallet in
 1. Clone the repository and install dependencies:
 
 ```bash
-git clone https://github.com/tx-tomcat/invite-registration.git
-cd invite-registration
+git clone https://github.com/tx-tomcat/invite-registration-frontend.git
+cd invite-registration-frontend
 pnpm install
 ```
 
